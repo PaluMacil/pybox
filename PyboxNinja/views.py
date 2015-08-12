@@ -28,3 +28,9 @@ def send_image(filename):
 def send_js(filename):
     path = join(app.static_folder, 'js')
     return send_from_directory(path, filename)
+
+
+@app.route('/favicon.ico')
+def favicon():
+    return send_from_directory(join(app.root_path, 'static', 'images'),
+                               'favicon.ico', mimetype='image/vnd.microsoft.icon')
