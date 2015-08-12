@@ -1,32 +1,18 @@
 __author__ = 'dan'
 
 from PyboxNinja import app
-from flask import send_from_directory
+from flask import send_from_directory, render_template
 from os.path import join
 
 
 @app.route('/')
 def index():
-    return 'Hello World!'
+    return render_template('index.html', author='Dan Wolf')
 
 
-@app.route('/css/<path:filename>')
-def send_css(filename):
-    path = join(app.static_folder, 'css')
-    return send_from_directory(path, filename)
-
-
-@app.route('/images/<path:filename>')
-def send_image(filename):
-    path = join(app.static_folder, 'images')
-    print(path, end='\n')
-    print(filename, end='\n')
-    return send_from_directory(path, filename)
-
-
-@app.route('/js/<path:filename>')
-def send_js(filename):
-    path = join(app.static_folder, 'js')
+@app.route('/static/<folder>/<path:filename>')
+def send_static(folder, filename):
+    path = join(app.static_folder, folder)
     return send_from_directory(path, filename)
 
 
