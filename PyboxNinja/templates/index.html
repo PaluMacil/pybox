@@ -29,10 +29,20 @@
   </div>
 
   <main class="mdl-layout__content">
+  {{ post|safe }}
 
 {% endblock %}
 {% block site %}DanWolf.NET (powered by Pybox Ninja){% endblock %}
 {% block footer %}
+    <style>
+        .mdl-layout__content {
+            display: -webkit-flex;
+            display: flex;
+            -webkit-flex-direction: column;
+                    flex-direction: column;
+        }
+    </style>
+    <div class="mdl-layout-spacer"></div>
     <footer class="mdl-mini-footer">
       <div class="mdl-mini-footer__left-section">
         <div class="mdl-logo">DanWolf.NET</div>

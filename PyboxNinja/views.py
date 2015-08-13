@@ -7,7 +7,8 @@ from os.path import join
 
 @app.route('/')
 def index():
-    return render_template('index.html', author='Dan Wolf')
+    post=render_template('post.html')
+    return render_template('index.html', author='Dan Wolf', post=post)
 
 
 @app.route('/static/<folder>/<path:filename>')
