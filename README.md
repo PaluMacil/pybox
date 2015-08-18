@@ -14,3 +14,4 @@ PRIMARY GOALS:
 RESOURCES:
 
 1. Stock images from www.pexels.com and www.freefavicon.com
+2. Inspiration, naming conventions, and some class structure are from Miguel Grinberg's flasky.
