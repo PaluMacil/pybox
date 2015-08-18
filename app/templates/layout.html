@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<!--suppress HtmlUnknownTarget -->
+<html lang="en">
+<head>
+    {% block head %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}My Page{% endblock %} - {% block site %}Pybox Ninja{% endblock %}</title>
+    {% endblock %}
+    <link rel="shortcut icon" href="/favicon.ico"/>
+    <link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.0.2/material.blue-amber.min.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    {% block content %}{% endblock %}
+
+    {% block footer %}
+      &copy; Copyright 2015 {{ author }}.
+      Powered by <a href="http://pyboxninja.org/">PyboxNinja.org</a>.
+    {% endblock %}
+
+    {% block javascript %}
+    <script src="https://storage.googleapis.com/code.getmdl.io/1.0.2/material.min.js"></script>
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script src="/static/js/main.js"></script>
+    {% endblock %}
+</body>
+</html>

@@ -1,0 +1,56 @@
+{% extends "layout.html" %}
+{% block title %}Home{% endblock %}
+{% block content %}
+<!-- Uses a transparent header that draws on top of the layout's background -->
+<div class="layout-transparent mdl-layout mdl-js-layout">
+  <header class="mdl-layout__header mdl-layout__header--transparent">
+    <div class="mdl-layout__header-row">
+      <!-- Title -->
+      <span class="mdl-layout-title">DanWolf.NET</span>
+      <!-- Add spacer, to align navigation to the right -->
+      <div class="mdl-layout-spacer"></div>
+      <!-- Navigation -->
+      <nav class="mdl-navigation">
+        <a class="mdl-navigation__link" href="">Pybox Ninja</a>
+        <a class="mdl-navigation__link" href="">General Web Dev</a>
+        <a class="mdl-navigation__link" href="">Other Tech</a>
+        <a class="mdl-navigation__link" href="">Personal</a>
+      </nav>
+    </div>
+  </header>
+  <div class="mdl-layout__drawer">
+    <span class="mdl-layout-title">DanWolf.NET</span>
+    <nav class="mdl-navigation">
+      <a class="mdl-navigation__link" href="">Pybox Ninja</a>
+      <a class="mdl-navigation__link" href="">General Web Dev</a>
+      <a class="mdl-navigation__link" href="">Other Tech</a>
+      <a class="mdl-navigation__link" href="">Personal</a>
+    </nav>
+  </div>
+
+  <main class="mdl-layout__content">
+  {{ post|safe }}
+
+{% endblock %}
+{% block site %}DanWolf.NET (powered by Pybox Ninja){% endblock %}
+{% block footer %}
+    <style>
+        .mdl-layout__content {
+            display: -webkit-flex;
+            display: flex;
+            -webkit-flex-direction: column;
+                    flex-direction: column;
+        }
+    </style>
+    <div class="mdl-layout-spacer"></div>
+    <footer class="mdl-mini-footer">
+      <div class="mdl-mini-footer__left-section">
+        <div class="mdl-logo">DanWolf.NET</div>
+        <ul class="mdl-mini-footer__link-list">
+          <li>{{ super() }}</li>
+        </ul>
+      </div>
+    </footer>
+  </main>
+</div>
+{% endblock %}
