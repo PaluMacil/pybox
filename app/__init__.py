@@ -1,3 +1,5 @@
+"""app\__init__.py: This file initializes the Flask app."""
+
 __author__ = 'dan'
 
 from flask import Flask
@@ -9,7 +11,7 @@ db = SQLAlchemy()
 
 login_manager = LoginManager()
 login_manager.session_protection = 'strong'
-login_manager.login_view = 'auth.login'
+login_manager.login_view = 'account.login'
 
 
 def create_app(config_name):
@@ -20,10 +22,13 @@ def create_app(config_name):
     db.init_app(app)
     login_manager.init_app(app)
 
-    from .main import main as main_blueprint
-    app.register_blueprint(main_blueprint)
+    from .core import core as core_blueprint
+    app.register_blueprint(core_blueprint)
 
-    from .auth import auth as auth_blueprint
-    app.register_blueprint(auth_blueprint, url_prefix='/auth')
+    from .account import account as account_blueprint
+    app.register_blueprint(account_blueprint, url_prefix='/account')
+
+    from .blog import blog as blog_blueprint
+    app.register_blueprint(blog_blueprint, url_prefix='/blog')
 
     return app
