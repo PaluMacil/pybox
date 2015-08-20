@@ -4,6 +4,7 @@ __author__ = 'dan'
 
 from . import account
 
+
 @account.route('/login')
 def login():
     return "login page!"
