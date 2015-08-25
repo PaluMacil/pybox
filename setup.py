@@ -21,5 +21,14 @@ setup(
         "Development Status :: 2 - Pre-Alpha",
         "Topic :: Utilities",
         "License :: OSI Approved :: GNU General Public License v2 (GPLv2)",
+    ],
+    install_requires=[
+        "Flask",
+        "Flask-SQLAlchemy",
+        "bleach",
+        "alembic",
+        "Flask-Bootstrap",
+        "Flask-Login",
+        "Flask-WTF",
     ]
 )

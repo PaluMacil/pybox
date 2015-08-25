@@ -9,6 +9,7 @@ class Config:
     SSL_DISABLE = False
     SQLALCHEMY_COMMIT_ON_TEARDOWN = True
     SQLALCHEMY_RECORD_QUERIES = True
+    PYCANS =
 
     @staticmethod
     def init_app(app):
