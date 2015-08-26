@@ -2,7 +2,7 @@
 
 __author__ = 'dan'
 
-from flask import Blueprint
+from flask import Blueprint, g
 
 core = Blueprint('core', __name__)
 

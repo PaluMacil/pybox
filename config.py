@@ -9,11 +9,14 @@ class Config:
     SSL_DISABLE = False
     SQLALCHEMY_COMMIT_ON_TEARDOWN = True
     SQLALCHEMY_RECORD_QUERIES = True
-    PYCANS =
+    # Load Redis config (not yet implemented)
+    CACHEMETHOD = os.environ.get('CACHEMETHOD')
+    CACHEPATH = os.environ.get('CACHEPATH')
 
     @staticmethod
     def init_app(app):
         pass
+
 
 class DevelopmentConfig(Config):
     DEBUG = True
