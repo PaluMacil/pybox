@@ -1,7 +1,7 @@
 # Pybox
 Pybox is a modular CMS based on Flask with plugins and themes.
 
-It's currently in conceptual stages and not ready for use.
+It's currently in **conceptual stages and not ready for use**.
 
 The reason for this project is my love of Python and rapidly growing interest in Flask. The reason I find Flask to be a fantastic framework is the light, modular nature of it, and I don't think that will ever change because that's what Flask is based around. In my opinion, that is why a lot of new developers start Python web dev here instead of Django. However, I'd like to see two primary goals fulfilled in this project.
 
@@ -13,5 +13,5 @@ PRIMARY GOALS:
 
 RESOURCES:
 
-1. Stock images from www.pexels.com and www.freefavicon.com
-2. Inspiration, naming conventions, and some class structure are from Miguel Grinberg's flasky.
+1. Stock images from [Pexels](www.pexels.com) and [Free Favicon](www.freefavicon.com)
+2. Inspiration, naming conventions, and some class structure are from [Miguel Grinberg's flasky](https://github.com/miguelgrinberg/flasky).
