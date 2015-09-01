@@ -54,7 +54,7 @@ def setup():
     db.session.add_all([setting_sitetitle, setting_attribution, setting_frontpage])
 
     # Install some default pycans
-    pycan_page = Pycan(name='PAGE', packagename='PYBOXPAGE', status='ACTIVE',
+    pycan_page = Pycan(name='Page', packagename='page', status='ACTIVE',
                        description='This Pycan allows the addition of web pages to the site.')
     db.session.add(pycan_page)
 

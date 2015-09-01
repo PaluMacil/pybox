@@ -3,6 +3,8 @@
 __author__ = 'dan'
 
 from .. import db
+from os import path, pardir
+from importlib import import_module
 
 
 class Setting(db.Model):
@@ -29,11 +31,19 @@ class Pycan(db.Model):
     status = db.Column(db.String(64), default='INACTIVE')
     description = db.Column(db.Text)
 
+    @property
+    def package(self):
+        package_path = path.join(pardir(__file__), 'plugins', self.packagename)
+        if path.isdir(package_path):
+            return import_module(package_path, __package__)
+        else:
+            return None
+
     @classmethod
-    def as_list(cls, only_active=True):
+    def as_dict(cls, only_active=True):
         if only_active:
             pycan_list = cls.query.filter_by(status='ACTIVE').all()
         else:
             pycan_list = cls.query.all()
 
-        return pycan_list
+        return {pycan.packagename: pycan for pycan in pycan_list}
