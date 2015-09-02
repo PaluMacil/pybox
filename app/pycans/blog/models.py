@@ -3,7 +3,7 @@
 __author__ = 'dan'
 
 from datetime import datetime
-from .. import db
+from app import db
 
 
 class Post(db.Model):

@@ -30,9 +30,6 @@ def create_app(config_name):
     from .account import account as account_blueprint
     app.register_blueprint(account_blueprint, url_prefix='/account')
 
-    from .blog import blog as blog_blueprint
-    app.register_blueprint(blog_blueprint, url_prefix='/blog')
-
     for blueprint in get_blueprint_tuples():
         print(blueprint)
         app.register_blueprint(blueprint[0], url_prefix=blueprint[1])
@@ -41,15 +38,17 @@ def create_app(config_name):
 
 
 def get_blueprint_tuples():
-    # The 'blueprints' list is composed of tuples with a blueprint object and url_prefix (string)
-    blueprints = []
+
     plugin_dir = path.join(path.dirname(__file__), 'pycans')
 
     import_string_list = [''.join(['.pycans.', d]) for d
                           in listdir(plugin_dir)
                           if path.isdir(path.join(plugin_dir, d))
                           and not d.startswith('__')]
+
+    # The 'blueprints' list is composed of tuples with a blueprint object and url_prefix (string)
+    blueprints = []
     for import_string in import_string_list:
         module = import_module(import_string, __package__)
-        blueprints.append((module.blueprint, module.__name__.split('.')[2]))
+        blueprints.append((module.blueprint, ''.join(['/', module.__name__.split('.')[2]])))
     return blueprints

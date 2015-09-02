@@ -10,8 +10,11 @@ from os import path
 
 @core.route('/')
 def index():
-    post = render_template('widgets/post.html')
-    return render_template('index.html', author='Dan Wolf', post=post)
+    main_page_pycan = g.settings.get('CORE.MAIN.FRONTPAGE')
+    if main_page_pycan:
+        return g.pycans[main_page_pycan].package.main()
+    else:
+        return 'This page does not exist', 404
 
 
 @core.route('/favicon.ico')
@@ -24,7 +27,8 @@ def favicon():
 def load_globals():
     # Don't load globals when handling static requests
     if '/static/' not in request.path:
-        g.settings = Setting.as_list()
+        g.settings = Setting.as_dict()
+
         g.pycans = Pycan.as_dict()
         print(g.pycans)
 

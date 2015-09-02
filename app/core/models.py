@@ -2,7 +2,7 @@
 
 __author__ = 'dan'
 
-from .. import db
+from app import db
 from os import path, pardir
 from importlib import import_module
 
@@ -16,11 +16,12 @@ class Setting(db.Model):
     value = db.Column(db.String(64))
 
     @classmethod
-    def as_list(cls):
+    def as_dict(cls):
 
-        settings_list = cls.query.all()
-
-        return settings_list
+        settings = cls.query.all()
+        settings_dict = {'.'.join([setting.blueprint, setting.category, setting.name]): setting.value
+                         for setting in settings}
+        return settings_dict
 
 
 class Pycan(db.Model):
@@ -33,9 +34,10 @@ class Pycan(db.Model):
 
     @property
     def package(self):
-        package_path = path.join(pardir(__file__), 'plugins', self.packagename)
+        pycan_root = path.join(path.dirname(__file__), pardir, 'pycans')
+        package_path = path.join(pycan_root, self.packagename)
         if path.isdir(package_path):
-            return import_module(package_path, __package__)
+            return import_module(''.join(['app.pycans.', self.packagename]), __package__)
         else:
             return None
 

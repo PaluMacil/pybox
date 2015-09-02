@@ -18,7 +18,8 @@ manager.add_command("shell", Shell(make_context=make_shell_context))
 def setup():
     """Run db setup tasks."""
     from app.account.models import Role, User
-    from app.blog.models import Post
+    from app.pycans.blog.models import Post
+    from app.pycans.page.models import Page
     from app.core.models import Pycan, Setting
 
     db.create_all()
@@ -50,13 +51,16 @@ def setup():
     setting_attribution = Setting(name='ATTRIBUTION', blueprint='CORE', category='MAIN',
                                   value="(powered by Pybox.io)")
     setting_frontpage = Setting(name='FRONTPAGE', blueprint='CORE', category='MAIN',
-                                value="PYCAN:BLOG")
+                                value="blog")
     db.session.add_all([setting_sitetitle, setting_attribution, setting_frontpage])
 
     # Install some default pycans
+    pycan_blog = Pycan(name='Blog', packagename='blog', status='ACTIVE',
+                       description='This Pycan allows the addition of blog posts to the site.')
     pycan_page = Pycan(name='Page', packagename='page', status='ACTIVE',
                        description='This Pycan allows the addition of web pages to the site.')
-    db.session.add(pycan_page)
+
+    db.session.add_all([pycan_blog, pycan_page])
 
     # Commit session
     db.session.commit()

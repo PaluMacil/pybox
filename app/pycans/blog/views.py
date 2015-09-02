@@ -8,5 +8,5 @@ from . import blog
 
 @blog.route('/')
 def index():
-    post = render_template('post.html')
+    post = render_template('widgets/post.html')
     return render_template('index.html', author='Dan Wolf', post=post)
