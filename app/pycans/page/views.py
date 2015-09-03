@@ -8,4 +8,6 @@ from . import page
 
 @page.route('/')
 def index():
-    pass
+    return render_template('page/user.html')
+
+

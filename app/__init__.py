@@ -5,11 +5,13 @@ __author__ = 'dan'
 from flask import Flask
 from flask.ext.sqlalchemy import SQLAlchemy
 from flask.ext.login import LoginManager
+from flask.ext.bootstrap import Bootstrap
 from config import config
 from os import path, listdir
 from importlib import import_module
 
 db = SQLAlchemy()
+bootstrap = Bootstrap()
 
 login_manager = LoginManager()
 login_manager.session_protection = 'strong'
@@ -21,6 +23,7 @@ def create_app(config_name):
     app.config.from_object(config[config_name])
     config[config_name].init_app(app)
 
+    bootstrap.init_app(app)
     db.init_app(app)
     login_manager.init_app(app)
 

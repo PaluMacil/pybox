@@ -1,0 +1,11 @@
+body {
+    margin-top: 50px;
+}
+
+.full {
+    background: url('/static/images/blog/background/wolf.jpeg') no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+}

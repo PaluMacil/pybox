@@ -10,3 +10,8 @@ from . import blog
 def index():
     post = render_template('widgets/post.html')
     return render_template('index.html', author='Dan Wolf', post=post)
+
+
+@blog.route('/test')
+def test():
+    return render_template('blog/user.html')

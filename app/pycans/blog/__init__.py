@@ -3,13 +3,13 @@
 __author__ = 'dan'
 
 from flask import Blueprint
-from importlib import import_module
 
 # Provide a blueprint object for dynamic import
-blueprint = Blueprint('blog', __name__)
+blueprint = Blueprint('blog', __name__, template_folder='templates')
 # Provide an alias for the blueprint for readable views
 blog = blueprint
 
 from . import views
 
+# Access to main view
 main = views.index
