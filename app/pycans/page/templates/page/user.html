@@ -1,83 +1,95 @@
 {% extends "bootstrap/base.html" %}
-{% block html_attribs %}{{ super() }} class="full" lang="en"{% endblock %}
-{% block metas %}
-    {{ super() }}
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-{% endblock %}
-{% block title %}{{ g.settings.get('CORE.MAIN.SITE_TITLE') }}{% endblock %}
-{% block styles %}
-    {{super()}}
-    <link rel="stylesheet" href="/static/css/blog/full.css">
-    <link rel="stylesheet" href="/static/css/blog/main.css">
-{% endblock %}
+{% block html_attribs %}{{ super() }} lang="en" class="full"{% endblock %}
+{% block html %}
+    <head>
+    {% block metas %}
+        {{ super() }}
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    {% endblock %}
+    {% block title %}{{ g.settings.get('CORE.MAIN.SITE_TITLE') }}{% endblock %}
+    {% block styles %}
+        {{super()}}
+        <link rel="stylesheet" href="/static/css/blog/full.css">
+        <link rel="stylesheet" href="/static/css/blog/main.css">
+    {% endblock %}
 
-{% block navbar %}
-    <!-- Navigation -->
-    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-        <div class="container">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar-collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="#">{{ g.settings.get('CORE.MAIN.SITE_TITLE') }}</a>
-            </div>
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="main-navbar-collapse">
-                <ul class="nav navbar-nav">
-                    <li>
-                        <a href="#">Pybox.io</a>
-                    </li>
-                    <li>
-                        <a href="#">Tech</a>
-                    </li>
-                    <li>
-                        <a href="#">Personal</a>
-                    </li>
-                </ul>
-            </div>
-            <!-- /.navbar-collapse -->
-        </div>
-        <!-- /.container -->
-    </nav>
-{% endblock %}
-
-{% block content %}
-    <div class="container">
-        <div class="row">
-            <!-- Card Projects -->
-            <div class="col-md-6 col-md-offset-3">
-                <div class="card">
-                    <div class="card-image">
-                        <img class="img-responsive" src="/static/images/uploads/welcome_card.jpg">
-                        <span class="card-title">Example Blog Post</span>
+    {% block head %}
+        {{super()}}
+    {% endblock %}
+    </head>
+    <body>
+    {% block body %}
+        <div>
+        {% block navbar %}
+            <!-- Navigation -->
+            <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+                <div class="container">
+                    <!-- Brand and toggle get grouped for better mobile display -->
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar-collapse">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand" href="#">{{ g.settings.get('CORE.MAIN.SITE_TITLE') }}</a>
                     </div>
-
-                    <div class="card-content">
-                        <p>Cards for display in portfolio style material design by Google.</p>
+                    <!-- Collect the nav links, forms, and other content for toggling -->
+                    <div class="collapse navbar-collapse" id="main-navbar-collapse">
+                        <ul class="nav navbar-nav">
+                            <li>
+                                <a href="#">Pybox</a>
+                            </li>
+                            <li>
+                                <a href="#">Tech</a>
+                            </li>
+                            <li>
+                                <a href="#">Personal</a>
+                            </li>
+                        </ul>
                     </div>
+                    <!-- /.navbar-collapse -->
+                </div>
+                <!-- /.container -->
+            </nav>
+        {% endblock %}
 
-                    <div class="card-action">
-                        <a href="#" target="new_blank">Link</a>
-                        <a href="#" target="new_blank">Link</a>
-                        <a href="#" target="new_blank">Link</a>
-                        <a href="#" target="new_blank">Link</a>
-                        <a href="#" target="new_blank">Link</a>
+        {% block content %}
+            <div class="container">
+                <div class="row">
+                    <!-- Card Projects -->
+                    <div class="col-md-6 col-md-offset-3">
+                        <div class="card">
+                            <div class="card-image">
+                                <img class="img-responsive" src="/static/images/uploads/welcome_card.jpg">
+                                <span class="card-title">Example Blog Post</span>
+                            </div>
+
+                            <div class="card-content">
+                                <p>Cards for display in portfolio style material design by Google.</p>
+                            </div>
+
+                            <div class="card-action">
+                                <a href="#" target="new_blank">Link</a>
+                                <a href="#" target="new_blank">Link</a>
+                                <a href="#" target="new_blank">Link</a>
+                                <a href="#" target="new_blank">Link</a>
+                                <a href="#" target="new_blank">Link</a>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
+        {% endblock %}
         </div>
-    </div>
-{% endblock %}
-
-{% block scripts %}
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
-    {{super()}}
+        {% block scripts %}
+            <!--[if lt IE 9]>
+                <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+                <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+            <![endif]-->
+            {{super()}}
+        {% endblock %}
+    {% endblock %}
+    </body>
 {% endblock %}
