@@ -1,29 +1,67 @@
-<!DOCTYPE html>
-<!--suppress HtmlUnknownTarget -->
-<html lang="en">
-<head>
-    {% block head %}
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}My Page{% endblock %} - {% block site %}Pybox{% endblock %}</title>
-    {% endblock %}
-    <link rel="shortcut icon" href="/favicon.ico"/>
-    <link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.0.2/material.blue-amber.min.css" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <link rel="stylesheet" href="/static/css/style.css">
-</head>
-<body>
-    {% block content %}{% endblock %}
+{% extends "bootstrap/base.html" %}
+{% import "bootstrap/fixes.html" as fixes %}
 
-    {% block footer %}
-      &copy; Copyright 2015 {{ author }}.
-      Powered by <a href="http://pyboxninja.org/">PyboxNinja.org</a>.
+{% block html_attribs %}{{ super() }} lang="en" class="full"{% endblock %}
+{% block html %}
+    <head>
+    {% block metas %}
+        {{ super() }}
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    {% endblock %}
+    {% block title %}{{ g.settings.get('CORE.MAIN.SITE_TITLE') }}{% endblock %}
+    {% block styles %}
+        {{super()}}
+        <link rel="stylesheet" href="/static/css/blog/full.css">
+        <link rel="stylesheet" href="/static/css/blog/main.css">
     {% endblock %}
 
-    {% block javascript %}
-    <script src="https://storage.googleapis.com/code.getmdl.io/1.0.2/material.min.js"></script>
-    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
-    <script src="/static/js/main.js"></script>
-    {% endblock %}
-</body>
-</html>
+    </head>
+    <body>
+    {% block body %}
+
+        {% block navbar %}
+            <!-- Navigation -->
+            <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+                <div class="container">
+                    <!-- Brand and toggle get grouped for better mobile display -->
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar-collapse">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand" href="#">{{ g.settings.get('CORE.MAIN.SITE_TITLE') }}</a>
+                    </div>
+                    <!-- Collect the nav links, forms, and other content for toggling -->
+                    <div class="collapse navbar-collapse" id="main-navbar-collapse">
+                        <ul class="nav navbar-nav">
+                            <li>
+                                <a href="#">Pybox</a>
+                            </li>
+                            <li>
+                                <a href="#">Tech</a>
+                            </li>
+                            <li>
+                                <a href="#">Personal</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- /.navbar-collapse -->
+                </div>
+                <!-- /.container -->
+            </nav>
+        {% endblock %}
+
+        {% block content %}
+
+        {% endblock content %}
+
+        {% block scripts %}
+            {{super()}}
+            {{fixes.ie8()}}
+        {% endblock scripts %}
+    {% endblock body %}
+    </body>
+{% endblock html %}

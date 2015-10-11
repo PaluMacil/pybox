@@ -1,3 +1,24 @@
-{% extends "bootstrap/base.html" %}
+{% extends "layout.html" %}
+{% block content -%}
+    <div class="container">
+        <div class="row">
+            <!-- Card Projects -->
+            <div class="col-md-6 col-md-offset-3">
+                <div class="card">
+                    <div class="card-image">
+                        <img class="img-responsive" src="/static/images/uploads/welcome_card.jpg">
+                        <span class="card-title">Example Blog Post</span>
+                    </div>
 
-{% block title %}{{ g.settings.get('CORE.MAIN.SITE_TITLE') }}{% endblock %}
+                    <div class="card-content">
+                        <p>Cards for display in portfolio style material design by Google.</p>
+                    </div>
+
+                    <div class="card-action">
+                        <a href="#" target="new_blank">Comments (0)</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{%- endblock content %}
