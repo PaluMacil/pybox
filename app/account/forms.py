@@ -1,6 +1,6 @@
 __author__ = 'dan'
 
-from flask.ext.wtf import Form
+from flask_wtf import Form
 from wtforms import StringField, PasswordField, BooleanField, SubmitField
 from wtforms.validators import DataRequired, Length, Email
 from wtforms import ValidationError

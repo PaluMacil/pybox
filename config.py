@@ -9,6 +9,7 @@ class Config:
     SSL_DISABLE = False
     SQLALCHEMY_COMMIT_ON_TEARDOWN = True
     SQLALCHEMY_RECORD_QUERIES = True
+    SQLALCHEMY_TRACK_MODIFICATIONS = False
     # Load Redis config (not yet implemented)
     CACHEMETHOD = os.environ.get('CACHEMETHOD')
     CACHEPATH = os.environ.get('CACHEPATH')

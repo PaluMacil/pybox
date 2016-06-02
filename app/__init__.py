@@ -3,9 +3,9 @@
 __author__ = 'dan'
 
 from flask import Flask
-from flask.ext.sqlalchemy import SQLAlchemy
-from flask.ext.login import LoginManager
-from flask.ext.bootstrap import Bootstrap
+from flask_sqlalchemy import SQLAlchemy
+from flask_login import LoginManager
+from flask_bootstrap import Bootstrap
 from config import config
 from os import path, listdir
 from importlib import import_module
